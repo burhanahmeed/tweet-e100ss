@@ -37,4 +37,12 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+const Cron = require('node-cron')
+const Crawl = require('./control/crawler')
+
+Cron.schedule('*/1 * * * *', () => {
+	Crawl.crawl()
+	console.log('cron run');
+});
+
 module.exports = app;

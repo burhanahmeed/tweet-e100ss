@@ -29,7 +29,7 @@ module.exports = {
 		  // res.end()
 		  await module.exports.insertToDB(crawler.data)
 
-		  res.end()
+		  return true
 
 		} catch (err) {
 		  // res.status(500).json({
@@ -84,7 +84,7 @@ module.exports = {
 						tweet_time: date
 					}
 
-					console.log(i, insertData)
+					// console.log(i, insertData)
 					// console.log(date)
 
 					let inserting = await Twitter.insert(insertData)
