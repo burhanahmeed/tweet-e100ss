@@ -6,6 +6,10 @@ var logger = require('morgan');
 
 var app = express();
 
+app.listen(3000, function () {
+	console.log("Express server listening on port 3000");
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
@@ -40,7 +44,7 @@ app.use(function(err, req, res, next) {
 const Cron = require('node-cron')
 const Crawl = require('./control/crawler')
 
-Cron.schedule('*/1 * * * *', () => {
+Cron.schedule('*/10 * * * *', () => {
 	Crawl.crawl()
 	console.log('cron run');
 });
