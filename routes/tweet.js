@@ -8,4 +8,10 @@ router.get('/crawl', function(req, res, next) {
   Crawl.crawl({}, res)
 });
 
+router.get('/tesendpoint', function(req, res, next) {
+  res.json({
+    success: true
+  })
+});
+
 module.exports = router;
