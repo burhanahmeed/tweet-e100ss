@@ -22,14 +22,28 @@ module.exports = {
 		      Authorization: `Bearer ${result.data.access_token}`
 		    }
 		  })
+		  let ssTimeline = await axios.get('https://api.twitter.com/1.1/statuses/user_timeline.json', {
+		    params: {
+		      screen_name: `e100ss`,
+		      lang: 'id',
+		      count: '10',
+		      exclude_replies: true,
+		      include_rts: false
+		    },
+		    headers: {
+		      Authorization: `Bearer ${result.data.access_token}`
+		    }
+		  })
 		  // res.json({
 		  //   status: 200,
-		  //   data: crawler.data
+		  //   data: { statuses: ssTimeline.data }
 		  // })
-		  // res.end()
 		  await module.exports.insertToDB(crawler.data)
+		  await module.exports.insertToDB({ statuses: ssTimeline.data })
 
 		  return true
+
+		  // res.end()
 
 		} catch (err) {
 		  // res.status(500).json({
