@@ -17,7 +17,20 @@ module.exports = {
 	},
 	get: (params) => {
 		return new Promise((resolve, reject) => {
+			// console.log(params)
 			connection.query(`SELECT * FROM twitter WHERE id_tweet=${params.id}`, function (error, rows){
+		        if(error){
+		            // console.log(error)
+		            reject(error)
+		        } else{
+		            resolve(rows)
+		        }
+		    })
+		})
+	},
+	getAll: () => {
+		return new Promise((resolve, reject) => {
+			connection.query(`SELECT * FROM twitter ORDER BY timestamp DESC`, function (error, rows){
 		        if(error){
 		            // console.log(error)
 		            reject(error)
