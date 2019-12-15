@@ -3,28 +3,36 @@ import { Route, Switch } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
+import MainLayout from "./layouts/Main";
+
 import Home from './pages/Home';
 import List from './pages/List';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
+      <Route {...rest} render={props => (
+        <Layout>
+          <Component {...props} />
+        </Layout>
+      )} />
+    )
+
+    const App = () => (
+      <div>
+        <Switch>
+          <AppRoute exact path='/' layout={MainLayout} component={Home}/>
+          <AppRoute path='/list' layout={MainLayout} component={List}/>
+        </Switch>
+      </div>
+    )
+
+    return (
+      <Switch>
+        <App/>
+      </Switch>
+    );
+  }
 }
 
 export default App;

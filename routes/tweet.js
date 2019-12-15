@@ -14,4 +14,8 @@ router.get('/tesendpoint', function(req, res, next) {
   })
 });
 
+router.get('/tesdev', function(req, res, next) {
+  res.send('Hola')
+});
+
 module.exports = router;
