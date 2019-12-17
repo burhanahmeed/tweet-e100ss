@@ -6,7 +6,7 @@ import ItemCard from './ItemCard'
 
 const useStyles = makeStyles(theme => ({
     lists: {
-        margin: '20px'
+        margin: '20px 0'
     }
 }))
 

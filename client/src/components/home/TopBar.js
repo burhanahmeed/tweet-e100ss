@@ -31,7 +31,7 @@ export default function ButtonAppBar() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            Tweet Suara Surabaya
+            Kondisi Jalan
           </Typography>
         </Toolbar>
       </AppBar>
