@@ -28,6 +28,9 @@ export default function SelectBody() {
     const handleChange = (selectedOption) => {
         setSelectedOption(selectedOption)
     }
+    const handleDelete = (selectedOption) => {
+        setSelectedOption(null)
+    }
 
     return (
         <div className={clasess.lists}>
@@ -40,10 +43,16 @@ export default function SelectBody() {
                     options={options}
                 />
                 
-                <Chip
-                    size="small"
-                    label={selectedOption != null ? selectedOption.label : ''}
-                />
+                {
+                    selectedOption != null ? (
+                        <Chip
+                            size="small"
+                            label={selectedOption.label}
+                            onDelete={handleDelete}
+                        />
+                    ) : ''
+                }
+                
             </Container>
         </div>
     );
